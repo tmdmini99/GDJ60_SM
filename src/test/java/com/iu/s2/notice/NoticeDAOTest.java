@@ -44,5 +44,14 @@ public class NoticeDAOTest extends MyTest{
 	}
 	
 	
+	//@Test
+		public void setNoticeDelete() throws Exception{
+			NoticeDTO noticeDTO = new NoticeDTO();
+			noticeDTO.setNoticeNum(3L);
+			int re=noticeDAO.setNoticeDelete(noticeDTO);
+			
+			assertEquals(1, re);
+			
+		}
 	
 }
