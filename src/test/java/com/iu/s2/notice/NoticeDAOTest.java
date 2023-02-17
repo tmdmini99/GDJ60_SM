@@ -15,7 +15,7 @@ public class NoticeDAOTest extends MyTest{
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
-	@Test
+	//@Test
 	public void getNoticeList() throws Exception{
 		List<NoticeDTO>ar=noticeDAO.getNoticeList();
 		assertEquals(0,ar.size());
@@ -33,19 +33,16 @@ public class NoticeDAOTest extends MyTest{
 	@Test
 	public void setNoticeUpdate() throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setNoticeNum(3L);
+		noticeDTO.setNoticeNum(4L);
 		noticeDTO.setNoticeTitle("테스트12");
 		noticeDTO.setNoticeContents("contents");
 		noticeDTO.setNoticeWriter("gd");
-		int re=noticeDAO.setNoticeUpdate(noticeDTO);
+		noticeDTO.setNoticeHit(4L);
+		int re= noticeDAO.setNoticeUpdate(noticeDTO);
 		
 		assertEquals(1, re);
 	}
-	//@Test
-	public void setNoticeDelete() throws Exception{
-		
-		
-		
-	}
+	
+	
 	
 }

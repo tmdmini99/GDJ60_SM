@@ -17,7 +17,7 @@
 	</insert>
 	<update id="setNoticeUpdate" parameterType="NoticeDTO">
 		UPDATE NOTICE SET NOTICETITLE=#{noticeTitle},NOTICECONTENTS=#{noticeContents},
-		NOTICEWRITER=#{noticeWriter},NOTICEDATE=SYSDATE, NOTICEHIT=#{noticeHit} WHERE NOTICENUM=#{noticeNum}
+		NOTICEWRITER=#{noticeWriter},NOTICEREGDATE=SYSDATE, NOTICEHIT=#{noticeHit} WHERE NOTICENUM=#{noticeNum}
 	</update>
 	<delete id="setNoticeDelete" parameterType="NoticeDTO">
 		DELETE NOTICE WHERE NOTICENUM=#{noticeNum}
