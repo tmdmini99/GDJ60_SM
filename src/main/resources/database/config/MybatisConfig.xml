@@ -6,7 +6,10 @@
   
   
   <configuration>
-  
+  	<typeAliases>
+  		<typeAlias type="com.iu.s2.notice.NoticeDTO" alias="NoticeDTO"/>
+  		<!-- <typeAlias type="java.lang.Long" alias="Long"/> -->
+  	</typeAliases>
   </configuration>
 
 
