@@ -19,17 +19,20 @@ public class NoticeDAO {
 	public List<NoticeDTO> getNoticeList() throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getNoticeList");
 	}
-	public NoticeDTO getNoticeDetail(NoticeDTO noticeDTO) {
+	public NoticeDTO getNoticeDetail(NoticeDTO noticeDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getNoticeDetail", noticeDTO);
 	}
-	public int setNoticeAdd(NoticeDTO noticeDTO) {
+	public int setNoticeAdd(NoticeDTO noticeDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setNoticeAdd",noticeDTO);
 	}
-	public int setNoticeUpdate(NoticeDTO noticeDTO) {
+	public int setNoticeUpdate(NoticeDTO noticeDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setNoticeUpdate", noticeDTO);
 	}
-	public int setNoticeDelete(NoticeDTO noticeDTO) {
+	public int setNoticeDelete(NoticeDTO noticeDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setNoticeDelete", noticeDTO);
+	}
+	public int setNoticeFileAdd(NoticeImgDTO noticeImgDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setNoticeFileAdd", noticeImgDTO);
 	}
 	
 	

@@ -12,12 +12,22 @@
 	<select id="getNoticeList" resultType="NoticeDTO">
 		SELECT * FROM NOTICE
 	</select>
+	<select id="getNoticeDetail" parameterType="NoticeDTO" resultType="NoticeDTO">
+		SELECT N.*, NI.* FROM NOTICE N
+					LEFT JOIN
+					NOTICEIMG NI
+					ON(N.NOTICENUM = NI.NOTICENUM)
+		WHERE NOTICENUM=#{noticeNum}
+	</select>
 	<insert id="setNoticeAdd" parameterType="NoticeDTO">
 		INSERT INTO NOTICE VALUES(NOTICE_SEQ.NEXTVAL,#{noticeTitle},#{noticeContents},#{noticeWriter},SYSDATE,0)
 	</insert>
+	<insert id="setNoticeFileAdd" parameterType="NoticeImgDTO">
+		INSERT INTO NOTICEIMG VALUES(NOTICE_SEQ.NEXTVAL,#{noticeNum},#{fileName},#{oriName})
+	</insert>
 	<update id="setNoticeUpdate" parameterType="NoticeDTO">
-		UPDATE NOTICE SET NOTICETITLE=#{noticeTitle},NOTICECONTENTS=#{noticeContents},
-		NOTICEWRITER=#{noticeWriter},NOTICEREGDATE=SYSDATE, NOTICEHIT=#{noticeHit} WHERE NOTICENUM=#{noticeNum}
+		UPDATE NOTICE SET NOTICENUM=#{noticeNum}, NOTICETITLE=#{noticeTitle}, NOTICECONTENTS=#{noticeContents},
+		NOTICEWRITER=#{noticeWriter}, NOTICEREGDATE=SYSDATE, NOTICEHIT=#{noticeHit} WHERE NOTICENUM=#{noticeNum}
 	</update>
 	<delete id="setNoticeDelete" parameterType="NoticeDTO">
 		DELETE NOTICE WHERE NOTICENUM=#{noticeNum}

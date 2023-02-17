@@ -30,6 +30,7 @@ public class NoticeDAOTest extends MyTest{
 		
 		assertEquals(1, re);
 	}
+	
 	@Test
 	public void setNoticeUpdate() throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
@@ -51,6 +52,14 @@ public class NoticeDAOTest extends MyTest{
 			int re=noticeDAO.setNoticeDelete(noticeDTO);
 			
 			assertEquals(1, re);
+			
+		}
+		//@Test
+		public void getNoticeDetail() throws Exception{
+			NoticeDTO noticeDTO = new NoticeDTO();
+			noticeDTO.setNoticeNum(4L);
+			 noticeDTO=noticeDAO.getNoticeDetail(noticeDTO);
+			 assertNotNull(noticeDTO);
 			
 		}
 	
