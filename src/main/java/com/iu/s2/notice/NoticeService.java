@@ -29,7 +29,8 @@ public class NoticeService {
 	public int setNoticeAdd(NoticeDTO noticeDTO,MultipartFile pic) throws Exception{
 		int a=noticeDAO.setNoticeAdd(noticeDTO);
 		String realPath=servletContext.getRealPath("/resources/notice/img");
-		
+		System.out.println(realPath);
+		System.out.println(a==1);
 		FileManager fileManager = new FileManager();
 		String name=fileManager.fileSave(pic, realPath);
 		NoticeImgDTO noticeImgDTO= new NoticeImgDTO();
@@ -37,6 +38,7 @@ public class NoticeService {
 		noticeImgDTO.setFileName(name);
 		noticeImgDTO.setOriName(pic.getOriginalFilename());
 		noticeImgDTO.setNoticeNum(noticeDTO.getNoticeNum());
+		System.out.println(noticeDTO.getNoticeNum());
 		a=noticeDAO.setNoticeFileAdd(noticeImgDTO);
 		return a;
 	}

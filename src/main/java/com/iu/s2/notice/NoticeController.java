@@ -38,9 +38,10 @@ public class NoticeController {
 	}
 	@RequestMapping(value="add", method=RequestMethod.POST)
 	public ModelAndView getNoticeAdd(ModelAndView mv ,NoticeDTO noticeDTO, MultipartFile pic) throws Exception{
-		//int re=noticeService.setNoticeAdd(noticeDTO,pic);
+		int re=noticeService.setNoticeAdd(noticeDTO,pic);
 		mv.setViewName("redirect:./list");
 		System.out.println(pic.getOriginalFilename());
+		
 		return mv;
 	}
 	@RequestMapping(value="update", method=RequestMethod.GET)

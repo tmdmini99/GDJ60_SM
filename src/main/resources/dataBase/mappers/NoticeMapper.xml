@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  
+  	
+  
+<mapper namespace="com.iu.s2.notice.NoticeDAO">
+
+	<select id="getNoticeList" resultType="NoticeDTO">
+		SELECT * FROM NOTICE
+	</select>
+	<select id="getNoticeDetail" parameterType="NoticeDTO" resultMap="noticeDetailResult">
+		SELECT N.*, NI.* FROM NOTICE N
+													LEFT JOIN
+													NOTICEIMG NI
+													ON(N.NOTICENUM = NI.NOTICENUM)
+												WHERE N.NOTICENUM=#{noticeNum}
+	</select>
+	<resultMap type="NoticeDTO" id="noticeDetailResult">
+  		<!-- Primary key = id -->
+  		<id column="NOTICENUM" property="noticeNum"/>
+  		<!-- 그 외 나머지 -->
+  		<result column="NOTICETITLE" property="noticeTitle"/>
+  		<result column="NOTICECONTENTS" property="noticeContents"/>
+  		<result column="NOTICEWRITER" property="noticeWriter"/>
+  		<result column="NOTICEREGDATE" property="noticeRegDate"/>
+
+  		<!-- 1:1 관계에서 사용  1대1 관계와 1대N관계가 둘다 있을경우 1:1관계부터 사용-->
+  		<association property="noticeImgDTO" javaType="NoticeImgDTO">
+  			<id column="FILENUM" property="fileNum"/>
+  			<result column="FILENAME" property="fileName"/>
+  			<result column="ORINAME" property="oriName"/>
+  		</association>
+  		<!-- 1:N 관계에서 사용 -->
+  		<!-- <collection property=""></collection> -->
+  	</resultMap>
+	<insert id="setNoticeAdd" parameterType="NoticeDTO">
+	<selectKey keyProperty="noticeNum" resultType="Long" order="BEFORE">
+  		SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>
+		INSERT INTO NOTICE VALUES(#{noticeNum},#{noticeTitle},#{noticeContents},#{noticeWriter},SYSDATE,0)
+	</insert>
+	<insert id="setNoticeFileAdd" parameterType="NoticeImgDTO">
+		INSERT INTO NOTICEIMG VALUES(NOTICE_SEQ.NEXTVAL,#{noticeNum},#{fileName},#{oriName})
+	</insert>
+	<update id="setNoticeUpdate" parameterType="NoticeDTO">
+		UPDATE NOTICE SET NOTICENUM=#{noticeNum}, NOTICETITLE=#{noticeTitle}, NOTICECONTENTS=#{noticeContents},
+		NOTICEWRITER=#{noticeWriter}, NOTICEREGDATE=SYSDATE, NOTICEHIT=#{noticeHit} WHERE NOTICENUM=#{noticeNum}
+	</update>
+	<delete id="setNoticeDelete" parameterType="NoticeDTO">
+		DELETE NOTICE WHERE NOTICENUM=#{noticeNum}
+	</delete>
+
+</mapper>

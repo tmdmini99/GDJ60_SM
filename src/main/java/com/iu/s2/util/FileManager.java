@@ -16,8 +16,8 @@ public class FileManager {
 			//file.mkdir();//중간 폴더가 없으면 에러
 			file.mkdirs();//중간 폴더가 없으면 중간 폴더도 생성
 		}
-		String name=multipartFile.getOriginalFilename();
-		name=UUID.randomUUID().toString()+"_"+name;
+		String name=UUID.randomUUID().toString();
+		name=name+"_"+multipartFile.getOriginalFilename();
 		
 		file = new File(file, name);
 		

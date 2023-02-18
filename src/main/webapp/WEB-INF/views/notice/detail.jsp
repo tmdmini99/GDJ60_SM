@@ -15,6 +15,8 @@
 	${detail.noticeRegDate}<br>
 	${detail.noticeHit}<br>
 	
+	<img alt="img x" src="../resources/notice/img/${detail.noticeImgDTO.fileName}">
+	
 	<a href="./update?noticeNum=${detail.noticeNum}">게시판 수정</a>
 	<a href="./delete?noticeNum=${detail.noticeNum}">게시글 삭제</a>
 </body>
