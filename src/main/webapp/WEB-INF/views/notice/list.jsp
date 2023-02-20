@@ -9,16 +9,29 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-	ㅎㅇ
-	<c:forEach items="${list}" var="list">
-	NoticeNum : ${list.noticeNum}<br>
-	NoticeTitle :<a href="./detail?noticeNum=${list.noticeNum}">${list.noticeTitle}</a><br>
-	NoticeContents :${list.noticeContents}<br>
-	NoticeWriter :${list.noticeWriter}<br>
-	NoticeRegDate :${list.noticeRegDate}<br>
-	NoticeHit :${list.noticeHit}<br>
+	<c:import url="../template/header.jsp"></c:import>
 	
-	</c:forEach>
+	<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>게시물</th>
+					<th>작성자</th>
+					<th>작성날짜</th>
+					<th>조회수</th>
+				</tr>
+				</thead>
+				<tbody class="table-group-divider">
+					<c:forEach items="${list}" var="list">
+					<tr>
+						<td><a href="./detail?noticeNum=${list.noticeNum}">${list.noticeTitle}</a></td>
+						<td>${list.noticeWriter}</td>
+						<td class="tb1_td td1 td">${list.noticeRegDate}</td>
+						<td class="tb1_td td">${list.noticeHit}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+
 	
 	<div class="row">
 				<nav aria-label="Page navigation example">

@@ -9,26 +9,11 @@
     </button>
      <div class="collapse navbar-collapse" id="navbarSupportedContent">
      	<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link active" href="#">공지사항</a></li>
-					<li class="nav-item"><a class="nav-link active" href="/product/list?page">제품</a></li>
-					<li class="nav-item"><a class="nav-link active" href="/bankBook/list?page">저축상품</a></li>
-					<li class="nav-item"><a class="nav-link active" href="#">기타메뉴</a></li>
+					
+					<li class="nav-item"><a class="nav-link active" href="/notice/list">게시판</a></li>
+					
 			</ul>
-			<ul class="navbar-nav ">
-					<c:choose>
-						<c:when test="${empty member}">
-							<li class="nav-item"><a class="nav-link" href="/member/memberLogin">LOGIN</a></li>
-							<li class="nav-item"><a class="nav-link" href="/member/memberAdd">JOIN</a></li>
-						</c:when>
-						<c:otherwise>
-							<li class="nav-item"><a class="nav-link" href="/member/memberLogout">LOGOUT</a></li>
-							<li class="nav-item"><a class="nav-link" href="/member/memberPage?id=${member.id}">MY PAGE</a></li>
-						</c:otherwise>
-					</c:choose>
-					<li class="nav-item"><a class="nav-link" href="#">KO</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">EN</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">JP</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">CN</a></li>
+			
 			</ul>	
      </div>
   </div>
