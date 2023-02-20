@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.iu.s2.MyTest;
 
+
 public class NoticeDAOTest extends MyTest{
 
 	@Autowired
@@ -18,12 +19,13 @@ public class NoticeDAOTest extends MyTest{
 	@Test
 	public void setNoticeImgAdd() throws Exception{
 		NoticeImgDTO noticeDTO = new NoticeImgDTO();
+		for(int i=0; i<30; i++) {
 		noticeDTO.setFileName("DD");
 		noticeDTO.setNoticeNum(1L);
 		noticeDTO.setOriName("안녕하세요하세요");
 		int re=noticeDAO.setNoticeFileAdd(noticeDTO);
-		
 		assertEquals(1, re);
+		}
 	}
 	
 	

@@ -8,9 +8,35 @@
   	
   
 <mapper namespace="com.iu.s2.notice.NoticeDAO">
+	<sql id="searchCondition">
+  		<if test="kind =='contents'">
+  		 	WHERE NOTICECONTENTS LIKE '%'||#{search}||'%'
+  		</if>
+  		<if test="kind =='title'">
+  			WHERE NOTICETITLE LIKE '%'||#{search}||'%'
+  		</if>
+  	
+  	</sql>
+  	<select id="getNoticeCount" parameterType="Pager" resultType="Long">
+  		SELECT COUNT(NOTICENUM) FROM NOTICE
+  		<include refid="searchCondition"></include> 
+  		
+  		
+  	</select>
+
 
 	<select id="getNoticeList" resultType="NoticeDTO">
-		SELECT * FROM NOTICE
+		SELECT * FROM
+			(
+				SELECT ROWNUM R,N.* FROM
+					(SELECT * FROM NOTICE 
+					
+					<include refid="searchCondition"></include>
+					
+					
+						
+					ORDER BY NOTICENUM DESC) N)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	<select id="getNoticeDetail" parameterType="NoticeDTO" resultMap="noticeDetailResult">
 		SELECT N.*, NI.* FROM NOTICE N
@@ -27,7 +53,7 @@
   		<result column="NOTICECONTENTS" property="noticeContents"/>
   		<result column="NOTICEWRITER" property="noticeWriter"/>
   		<result column="NOTICEREGDATE" property="noticeRegDate"/>
-
+		<result column="NOTICEHIT" property="noticeHit"/>
   		<!-- 1:1 관계에서 사용  1대1 관계와 1대N관계가 둘다 있을경우 1:1관계부터 사용-->
   		<association property="noticeImgDTO" javaType="NoticeImgDTO">
   			<id column="FILENUM" property="fileNum"/>
@@ -53,5 +79,8 @@
 	<delete id="setNoticeDelete" parameterType="NoticeDTO">
 		DELETE NOTICE WHERE NOTICENUM=#{noticeNum}
 	</delete>
+	<update id="setNoticeUpdate1" parameterType="NoticeDTO">
+	UPDATE NOTICE SET NOTICEHIT =NOTICEHIT+1 WHERE NOTICENUM =#{noticeNum}
+	</update>
 
 </mapper>
