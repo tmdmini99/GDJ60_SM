@@ -1,21 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
-
+<c:import url="../template/header.jsp"></c:import>
+	<div class="container-fluid ">
+		<div class="row col-md-7 mx-auto my-3">
+			<h1 class="text-center mx-auto mb-5 border-bottom border-dark border-2 pb-2">게시글 추가</h1>
+			
+			<form action="./update" method="post">
+				
+				<div class="mb-3 row col-md-7 mx-auto" >
+					<label for="id" class="form-label ">번호</label> 
+					<input type="text" name="noticeNum" value="${update.noticeNum}" readonly>
+				</div>
+				
+				
+				<div class="mb-3 row col-md-7 mx-auto" >
+					<label for="id" class="form-label ">제목</label> 
+					<input type="text" name="noticeTitle" value="${update.noticeTitle}">
+					
+					
+				</div>
+				<div class="mb-3 row col-md-7 mx-auto" >
+					<label for="pw" class="form-label">내용</label> 
+					<input type="text" name="noticeContents" value="${update.noticeContents}">
+					
+					
+				</div> 
+				<div class="mb-3 row col-md-7 mx-auto" >
+					<label for="pw1" class="form-label">작성자</label> 
+					<input type="text" name="noticeWriter">
+					
+					
+				</div>
+				
+				<div class="mb-3 row col-md-7 mx-auto" >
+					<label for="address" class="form-label">조회수</label> 
+					<input type="text" name="noticeHit" value="${update.noticeHit}">
+					
+					
+				</div>
+				<button type="submit">등록</button>
+			</form>
+		</div>
+	</div>
 	
-	<form action="./update" method="post">
-		번호 :<input type="text" name="noticeNum" value="${update.noticeNum}" readonly>
-		제목 :<input type="text" name="noticeTitle" value="${update.noticeTitle}">
-		내용 :<input type="text" name="noticeContents" value="${update.noticeContents}">
-		작성자 :<input type="text" name="noticeWriter" value="${update.noticeWriter}">
-		조회수 : <input type="text" name="noticeHit" value="${update.noticeHit}">
-		<button type="submit">등록</button>
-	</form>
+		
+	
+		<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>
