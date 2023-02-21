@@ -58,7 +58,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("up before");
 		int re=noticeService.setNoticeUpdate(noticeDTO);
-		System.out.println("up after");
+		System.out.println(noticeDTO.getNoticeTitle());
 		mv.setViewName("redirect:./list");
 		return mv;
 	}

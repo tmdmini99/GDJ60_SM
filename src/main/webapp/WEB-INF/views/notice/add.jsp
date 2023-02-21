@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	ad
+	
 	<form action="./add" method="post" enctype="multipart/form-data">
 		제목 :<input type="text" name="noticeTitle">
 		내용 :<input type="text" name="noticeContents">

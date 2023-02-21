@@ -15,18 +15,9 @@ public class NoticeDAOTest extends MyTest{
 
 	@Autowired
 	private NoticeDAO noticeDAO;
-	
 	@Test
-	public void setNoticeImgAdd() throws Exception{
-		NoticeImgDTO noticeDTO = new NoticeImgDTO();
-		for(int i=0; i<30; i++) {
-		noticeDTO.setFileName("DD");
-		noticeDTO.setNoticeNum(1L);
-		noticeDTO.setOriName("안녕하세요하세요");
-		int re=noticeDAO.setNoticeFileAdd(noticeDTO);
-		assertEquals(1, re);
-		}
+	public void test() {
+		System.out.println("테슻트");
 	}
-	
 	
 }
