@@ -23,10 +23,10 @@
 				<tbody class="table-group-divider">
 					<c:forEach items="${list}" var="list">
 					<tr>
-						<td><a href="./detail?noticeNum=${list.noticeNum}">${list.noticeTitle}</a></td>
-						<td>${list.noticeWriter}</td>
-						<td class="tb1_td td1 td">${list.noticeRegDate}</td>
-						<td class="tb1_td td">${list.noticeHit}</td>
+						<td><a href="./detail?num=${list.num}">${list.title}</a></td>
+						<td>${list.writer}</td>
+						<td class="tb1_td td1 td">${list.regDate}</td>
+						<td class="tb1_td td">${list.hit}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

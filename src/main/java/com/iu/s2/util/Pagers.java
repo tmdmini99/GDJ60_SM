@@ -30,8 +30,8 @@ public class Pagers {
 	//startRow,lastRow 계산 하는 메서드
 	
 	public void makeRow() {
-		startRow=(page-1)*perPage+1;
-		lastRow=page*perPage;
+		startRow=(this.getPage()-1)*this.getPerPage()+1;
+		lastRow=this.getPage()*this.getPerPage();
 	}
 	public void makeNum(Long totalCount) {
 		//startNum lastNum
@@ -88,6 +88,9 @@ public class Pagers {
 	}
 
 	public String getSearch() {
+		if(this.search ==null) {
+			search="";
+		}
 		return search;
 	}
 
@@ -96,7 +99,8 @@ public class Pagers {
 	}
 
 	public Long getPerPage() {
-		if(perPage ==0 || perPage ==null) {
+		
+		if(this.perPage==null || this.perPage==0) {
 			this.perPage=10L;
 		}
 		return perPage;
@@ -115,7 +119,7 @@ public class Pagers {
 	}
 
 	public Long getPage() {
-		if(page ==0 || page ==null) {
+		if(this.page ==null || this.page ==0  ) {
 			this.page=1L;
 		}
 		return page;

@@ -10,22 +10,22 @@
 <mapper namespace="com.iu.s2.notice.NoticeDAO">
 	<sql id="searchCondition">
   		<if test="kind =='contents'">
-  		 	WHERE NOTICECONTENTS LIKE '%'||#{search}||'%'
+  		 	WHERE CONTENTS LIKE '%'||#{search}||'%'
   		</if>
   		<if test="kind =='title'">
-  			WHERE NOTICETITLE LIKE '%'||#{search}||'%'
+  			WHERE TITLE LIKE '%'||#{search}||'%'
   		</if>
   	
   	</sql>
   	<select id="getNoticeCount" parameterType="Pager" resultType="Long">
-  		SELECT COUNT(NOTICENUM) FROM NOTICE
+  		SELECT COUNT(NUM) FROM NOTICE
   		<include refid="searchCondition"></include> 
   		
   		
   	</select>
 
 
-	<select id="getNoticeList" resultType="NoticeDTO">
+	<select id="getNoticeList" parameterType="Pager"  resultType="NoticeDTO">
 		SELECT * FROM
 			(
 				SELECT ROWNUM R,N.* FROM
@@ -35,25 +35,25 @@
 					
 					
 						
-					ORDER BY NOTICENUM DESC) N)
+					ORDER BY NUM DESC) N)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	<select id="getNoticeDetail" parameterType="NoticeDTO" resultMap="noticeDetailResult">
 		SELECT N.*, NI.* FROM NOTICE N
 													LEFT JOIN
 													NOTICEIMG NI
-													ON(N.NOTICENUM = NI.NOTICENUM)
-												WHERE N.NOTICENUM=#{noticeNum}
+													ON(N.NUM = NI.NUM)
+												WHERE N.NUM=#{num}
 	</select>
 	<resultMap type="NoticeDTO" id="noticeDetailResult">
   		<!-- Primary key = id -->
-  		<id column="NOTICENUM" property="noticeNum"/>
+  		<id column="NUM" property="num"/>
   		<!-- 그 외 나머지 -->
-  		<result column="NOTICETITLE" property="noticeTitle"/>
-  		<result column="NOTICECONTENTS" property="noticeContents"/>
-  		<result column="NOTICEWRITER" property="noticeWriter"/>
-  		<result column="NOTICEREGDATE" property="noticeRegDate"/>
-		<result column="NOTICEHIT" property="noticeHit"/>
+  		<result column="TITLE" property="title"/>
+  		<result column="CONTENTS" property="contents"/>
+  		<result column="WRITER" property="writer"/>
+  		<result column="REGDATE" property="regDate"/>
+		<result column="HIT" property="hit"/>
   		<!-- 1:1 관계에서 사용  1대1 관계와 1대N관계가 둘다 있을경우 1:1관계부터 사용-->
   		<association property="noticeImgDTO" javaType="NoticeImgDTO">
   			<id column="FILENUM" property="fileNum"/>
@@ -64,23 +64,23 @@
   		<!-- <collection property=""></collection> -->
   	</resultMap>
 	<insert id="setNoticeAdd" parameterType="NoticeDTO">
-	<selectKey keyProperty="noticeNum" resultType="Long" order="BEFORE">
+	<selectKey keyProperty="num" resultType="Long" order="BEFORE">
   		SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
   		</selectKey>
-		INSERT INTO NOTICE VALUES(#{noticeNum},#{noticeTitle},#{noticeContents},#{noticeWriter},SYSDATE,0)
+		INSERT INTO NOTICE VALUES(#{num},#{title},#{contents},#{writer},SYSDATE,0)
 	</insert>
 	<insert id="setNoticeFileAdd" parameterType="NoticeImgDTO">
-		INSERT INTO NOTICEIMG VALUES(NOTICE_SEQ.NEXTVAL,#{noticeNum},#{fileName},#{oriName})
+		INSERT INTO NOTICEIMG VALUES(NOTICE_SEQ.NEXTVAL,#{num},#{fileName},#{oriName})
 	</insert>
 	<update id="setNoticeUpdate" parameterType="NoticeDTO">
-		UPDATE NOTICE SET NOTICENUM=#{noticeNum}, NOTICETITLE=#{noticeTitle}, NOTICECONTENTS=#{noticeContents},
-		NOTICEWRITER=#{noticeWriter}, NOTICEREGDATE=SYSDATE, NOTICEHIT=#{noticeHit} WHERE NOTICENUM=#{noticeNum}
+		UPDATE NOTICE SET NUM=#{num}, TITLE=#{title},CONTENTS=#{contents},
+		WRITER=#{writer}, REGDATE=SYSDATE, HIT=#{hit} WHERE NUM=#{num}
 	</update>
 	<delete id="setNoticeDelete" parameterType="NoticeDTO">
-		DELETE NOTICE WHERE NOTICENUM=#{noticeNum}
+		DELETE NOTICE WHERE NUM=#{num}
 	</delete>
 	<update id="setNoticeUpdate1" parameterType="NoticeDTO">
-	UPDATE NOTICE SET NOTICEHIT =NOTICEHIT+1 WHERE NOTICENUM =#{noticeNum}
+	UPDATE NOTICE SET HIT =HIT+1 WHERE NUM =#{num}
 	</update>
 
 </mapper>

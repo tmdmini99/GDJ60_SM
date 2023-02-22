@@ -1,8 +1,8 @@
-package com.iu.s2.notice;
+package com.iu.s2.qna;
 
 import java.sql.Date;
 
-public class NoticeDTO {
+public class QnaDTO {
 	
 	private Long num;
 	private String title;
@@ -10,18 +10,11 @@ public class NoticeDTO {
 	private String writer;
 	private Date regDate;
 	private Long hit;
-	private NoticeImgDTO noticeImgDTO;
+	private Long ref;
+	private Long step;
+	private Long depth;
 	
 	
-	
-	
-	
-	public NoticeImgDTO getNoticeImgDTO() {
-		return noticeImgDTO;
-	}
-	public void setNoticeImgDTO(NoticeImgDTO noticeImgDTO) {
-		this.noticeImgDTO = noticeImgDTO;
-	}
 	public Long getNum() {
 		return num;
 	}
@@ -58,8 +51,24 @@ public class NoticeDTO {
 	public void setHit(Long hit) {
 		this.hit = hit;
 	}
-	
-	
+	public Long getRef() {
+		return ref;
+	}
+	public void setRef(Long ref) {
+		this.ref = ref;
+	}
+	public Long getStep() {
+		return step;
+	}
+	public void setStep(Long step) {
+		this.step = step;
+	}
+	public Long getDepth() {
+		return depth;
+	}
+	public void setDepth(Long depth) {
+		this.depth = depth;
+	}
 	
 	
 }

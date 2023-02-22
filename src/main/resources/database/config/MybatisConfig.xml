@@ -11,6 +11,8 @@
   		<typeAlias type="com.iu.s2.notice.NoticeImgDTO" alias="NoticeImgDTO"/>
   		<typeAlias type="java.lang.Long" alias="Long"/>
   		<typeAlias type="com.iu.s2.util.Pager" alias="Pager"/>
+  		<typeAlias type="com.iu.s2.util.Pagers" alias="Pagers"/>
+ 			<typeAlias type="com.iu.s2.qna.QnaDTO" alias="QnaDTO"/>
   	</typeAliases>
   </configuration>
 

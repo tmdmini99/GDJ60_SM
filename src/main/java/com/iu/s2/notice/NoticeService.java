@@ -46,8 +46,8 @@ public class NoticeService {
 		
 		noticeImgDTO.setFileName(name);
 		noticeImgDTO.setOriName(pic.getOriginalFilename());
-		noticeImgDTO.setNoticeNum(noticeDTO.getNoticeNum());
-		System.out.println(noticeDTO.getNoticeNum());
+		noticeImgDTO.setNum(noticeDTO.getNum());
+		System.out.println(noticeDTO.getNum());
 		a=noticeDAO.setNoticeFileAdd(noticeImgDTO);
 		return a;
 	}

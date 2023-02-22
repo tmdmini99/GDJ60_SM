@@ -18,25 +18,23 @@
 			<form action="./add" method="post" enctype="multipart/form-data">
 				<div class="mb-3 row col-md-7 mx-auto" >
 					<label for="id" class="form-label ">제목</label> 
-					<input type="text" name="noticeTitle">
+					<input type="text" name="title">
 					
 					
 				</div>
 				<div class="mb-3 row col-md-7 mx-auto" >
 					<label for="pw" class="form-label">내용</label> 
-					<input type="text" name="noticeContents">
+					<input type="text" name="contents">
 					
 					
 				</div> 
-				<div class="mb-3 row col-md-7 mx-auto" >
-					<label for="pw1" class="form-label">작성자</label> 
-					<input type="text" name="noticeWriter">
+				
 					
 					
 				</div>
 				<div class="mb-3 row col-md-7 mx-auto" >
 					<label for="name" class="form-label">이름</label> 
-					<input type="text" name="noticeWriter">
+					<input type="text" name="writer">
 					
 					
 				</div>

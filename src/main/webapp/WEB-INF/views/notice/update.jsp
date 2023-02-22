@@ -18,32 +18,32 @@
 				
 				<div class="mb-3 row col-md-7 mx-auto" >
 					<label for="id" class="form-label ">번호</label> 
-					<input type="text" name="noticeNum" value="${update.noticeNum}" readonly>
+					<input type="text" name="num" value="${update.num}" readonly>
 				</div>
 				
 				
 				<div class="mb-3 row col-md-7 mx-auto" >
 					<label for="id" class="form-label ">제목</label> 
-					<input type="text" name="noticeTitle" value="${update.noticeTitle}">
+					<input type="text" name="title" value="${update.title}">
 					
 					
 				</div>
 				<div class="mb-3 row col-md-7 mx-auto" >
 					<label for="pw" class="form-label">내용</label> 
-					<input type="text" name="noticeContents" value="${update.noticeContents}">
+					<input type="text" name="contents" value="${update.contents}">
 					
 					
 				</div> 
 				<div class="mb-3 row col-md-7 mx-auto" >
-					<label for="pw1" class="form-label">작성자</label> 
-					<input type="text" name="noticeWriter">
+					<label for="writer" class="form-label">작성자</label> 
+					<input type="text" name="writer" value="${update.writer}">
 					
 					
 				</div>
 				
 				<div class="mb-3 row col-md-7 mx-auto" >
 					<label for="address" class="form-label">조회수</label> 
-					<input type="text" name="noticeHit" value="${update.noticeHit}">
+					<input type="text" name="hit" value="${update.hit}">
 					
 					
 				</div>

@@ -24,20 +24,20 @@
 				<tbody class="table-group-divider">
 					
 					<tr>
-						<td>${detail.noticeNum}</td>
-						<td class="tb1_td td">${detail.noticeTitle}</td>
-						<td class="tb1_td td1 td">${detail.noticeContents}</td>
-						<td>${detail.noticeWriter}</td>
-						<td>${detail.noticeRegDate}</td>
-						<td>${detail.noticeHit}</td>
+						<td>${detail.num}</td>
+						<td class="tb1_td td">${detail.title}</td>
+						<td class="tb1_td td1 td">${detail.contents}</td>
+						<td>${detail.writer}</td>
+						<td>${detail.regDate}</td>
+						<td>${detail.hit}</td>
 						</tr>
 					
 				</tbody>
 			</table>
 	<img alt="img x" src="../resources/notice/img/${detail.noticeImgDTO.fileName}">
 	
-	<a href="./update?noticeNum=${detail.noticeNum}">게시판 수정</a>
-	<a href="./delete?noticeNum=${detail.noticeNum}">게시글 삭제</a>
+	<a href="./update?Num=${detail.num}">게시판 수정</a>
+	<a href="./delete?Num=${detail.num}">게시글 삭제</a>
 	<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>
