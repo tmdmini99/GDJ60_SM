@@ -27,4 +27,14 @@ public class QnaDAO {
 			System.out.println("넘어오냐?1");
 			return sqlSession.selectList(NAMESPACE+"getQnaList", pagers);
 		}
+		
+		public QnaDTO getQnaDetail(QnaDTO qnaDTO) throws Exception{
+			return sqlSession.selectOne(NAMESPACE+"getQnaDetail", qnaDTO);
+		}
+		public int setQnaAdd(QnaDTO qnaDTO) throws Exception{
+			return sqlSession.insert(NAMESPACE+"setQnaAdd", qnaDTO);
+		}
+		public int setQnaImgAdd(QnaImgDTO qnaImgDTO) throws Exception{
+			return sqlSession.insert(NAMESPACE+"setQnaImgAdd", qnaImgDTO);
+		}
 }

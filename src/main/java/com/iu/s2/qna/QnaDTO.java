@@ -13,8 +13,18 @@ public class QnaDTO {
 	private Long ref;
 	private Long step;
 	private Long depth;
+	private QnaImgDTO qnaImgDTO;
 	
 	
+	
+	
+	
+	public QnaImgDTO getQnaImgDTO() {
+		return qnaImgDTO;
+	}
+	public void setQnaImgDTO(QnaImgDTO qnaImgDTO) {
+		this.qnaImgDTO = qnaImgDTO;
+	}
 	public Long getNum() {
 		return num;
 	}

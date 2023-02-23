@@ -13,6 +13,7 @@
   		<typeAlias type="com.iu.s2.util.Pager" alias="Pager"/>
   		<typeAlias type="com.iu.s2.util.Pagers" alias="Pagers"/>
  			<typeAlias type="com.iu.s2.qna.QnaDTO" alias="QnaDTO"/>
+ 			<typeAlias type="com.iu.s2.qna.QnaImgDTO" alias="QnaImgDTO"/>
   	</typeAliases>
   </configuration>
 

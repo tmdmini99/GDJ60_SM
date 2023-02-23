@@ -12,7 +12,7 @@
 
 list page
 <c:forEach items="${list}" var="dto">
-	${dto.title}
+	<a href="./detail?num=${dto.num}">${dto.title}</a>
 	${dto.writer}
 	${dto.regDate}
 	
@@ -42,7 +42,7 @@ list page
     </li>
   </ul>
 </nav>
-
+<a href="./add">글쓰기</a>
 
 <c:import url="../template/common_js.jsp"></c:import>
 </body>

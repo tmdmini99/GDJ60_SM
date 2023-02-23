@@ -16,6 +16,7 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 
-<a href="./notice/list">list로 이동</a>
+<a href="./notice/list">notice로 이동</a>
+<a href="./qna/list">qna로 이동</a>
 </body>
 </html>
